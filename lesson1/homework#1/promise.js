@@ -17,11 +17,16 @@ makeGetRequest = url => {
   });
 };
 
+makeFetch = url => {
+  fetch(url).then(response => response.json());
+};
+
 for (let i = 0; i < 10; i++) {
   let url = `https://jsonplaceholder.typicode.com/users/${i + 1}`;
-  promiseArr[i] = makeGetRequest(url);
+  //promiseArr[i] = makeGetRequest(url);
+  promiseArr[i] = makeFetch(url);
 }
 
 Promise.all(promiseArr).then(data => {
-  console.log(data);
+  console.log(JSON.parse(data));
 });

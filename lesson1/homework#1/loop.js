@@ -1,5 +1,6 @@
 const loop = (times = 0, callback = null) => {
-  if (!callback) console.log("Sorry, no callback - no iteration!");
+  if (typeof callback !== 'function')
+    console.log('Sorry, no callback - no iteration!');
   for (let i = 0; i < times; i++) {
     callback(i);
   }

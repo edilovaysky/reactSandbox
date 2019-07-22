@@ -1,68 +1,65 @@
 class Human {
-  constructor() {
-    this.name = "";
-    this.age;
-    this.dateOfBirth = "";
+  constructor(data) {
+    this.name = data.name;
+    this.age = data.age;
+    this.dateOfBirth = data.dateOfBirth;
   }
   displayInfo() {
-    return `name: ${this.name};  age: ${this.age};  birthday: ${
-      this.dateOfBirth
-    };`;
+    return JSON.stringify(this);
   }
 }
 
 class Employee extends Human {
-  constructor() {
-    super();
-    this.salary;
-    this.department = "";
+  constructor(data) {
+    super(data);
+    this.salary = data.salary;
+    this.department = data.department;
   }
   displayInfo() {
-    const human = super.displayInfo();
-    console.log(
-      `${human}  department: ${this.department};  month-salary: ${
-        this.salary
-      } RUR;`
-    );
+    return super.displayInfo();
   }
 }
 
-class Meneger extends Employee {
-  constructor() {
-    super();
-    this.managerId = "";
+class Manager extends Employee {
+  constructor(data) {
+    super(data);
     this.developers = [];
   }
-  addDeveloper() {
-    this.developers.push(new Developer());
+  addDeveloper(developer) {
+    this.developers = this.developers.concat(developer);
+    developer.changeMyManager(this);
   }
-  removeDeveloper(id) {
-    for (let i = 0; i < this.developers.length; i++) {
-      if (Object.keys(this.developers[i].developerId) === id) {
-        this.developers.splice(i, 1);
-      }
-    }
-  }
-  displayDevelopers() {
-    console.log(this.developers);
+  removeDeveloper(developerToDelete) {
+    this.developers = this.developers.filter(developer => {
+      return developer !== developerToDelete;
+    });
+    developerToDelete.changeMyManager(null);
   }
 }
 
 class Developer extends Employee {
-  constructor() {
-    super();
-    this.developerId = "";
-    this.managers = [];
-    this.myManager = "";
+  constructor(data) {
+    super(data);
+    this.manager = null;
   }
-  displayMyManager() {
-    console.log(this.myManager);
-  }
-  changeMyManager(id) {
-    for (let i = 0; i < this.managers.length; i++) {
-      if (Object.keys(this.managers[i].managerId) === id) {
-        return (this.myManager = id);
-      }
+  changeMyManager(manager) {
+    this.manager = manager;
+    if (manager && !manager.developers.includes(this)) {
+      manager.addDeveloper(this);
     }
   }
 }
+
+const data = {
+  name: 'Lev',
+  age: 19,
+  dataOfBirth: 2000,
+  salary: 500000,
+  department: 'react-redux-development',
+};
+
+const developer = new Developer(data);
+const manager = new manager(data);
+manager.addDeveloper(developer);
+
+console.log(manager);
