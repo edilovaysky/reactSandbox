@@ -7,7 +7,7 @@ makeGetRequest = url => {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     xhr.addEventListener('load', function() {
-      if (xhr.status < 400) resolve(xhr.responseText);
+      if (xhr.status < 400) resolve(JSON.parse(xhr.responseText));
       else reject(new Error('Request failed: ' + xhr.statusText));
     });
     xhr.addEventListener('error', function() {
@@ -23,10 +23,10 @@ makeFetch = url => {
 
 for (let i = 0; i < 10; i++) {
   let url = `https://jsonplaceholder.typicode.com/users/${i + 1}`;
-  //promiseArr[i] = makeGetRequest(url);
-  promiseArr[i] = makeFetch(url);
+  promiseArr[i] = makeGetRequest(url);
+  //promiseArr[i] = makeFetch(url);
 }
 
 Promise.all(promiseArr).then(data => {
-  console.log(JSON.parse(data));
+  console.log(data);
 });
