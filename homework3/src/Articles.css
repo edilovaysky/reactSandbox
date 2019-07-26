@@ -1,0 +1,10 @@
+.article-panel {
+  width: 80%;
+  min-height: 10em;
+  box-shadow: 0.4em 0.4em 0.5em 5px rgba(122, 122, 122, 0.5);
+  color: rgb(245, 248, 248) !important;
+  background-color: rgb(163, 163, 233);
+}
+.article-panel:hover {
+  box-shadow: 0.4em 0.4em 0.9em 5px rgba(122, 122, 122, 0.5);
+}

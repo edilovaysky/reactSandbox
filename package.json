@@ -1,0 +1,41 @@
+{
+  "name": "reactsandbox",
+  "version": "1.0.0",
+  "description": "react-learning",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack",
+    "watch": "rimraf ./dist && webpack-dev-server --mode development --watch",
+    "build": "rimraf ./dist && webpack-dev-server --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edilovaysky/reactSandbox.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edilovaysky/reactSandbox/issues"
+  },
+  "homepage": "https://github.com/edilovaysky/reactSandbox#readme",
+  "dependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "core-js": "^3.1.4",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "webpack": "^4.36.1",
+    "webpack-cli": "^3.3.6"
+  },
+  "devDependencies": {
+    "css-loader": "^3.1.0",
+    "rimraf": "^2.6.3",
+    "style-loader": "^0.23.1",
+    "webpack-dev-server": "^3.7.2"
+  }
+}

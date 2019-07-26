@@ -1,0 +1,21 @@
+.login-btn {
+  margin-left: 0.2em;
+  width: 5em;
+  height: 2em;
+  border: none;
+  box-shadow: 0.4em 0.4em 2em 5px rgba(122, 122, 122, 0.5);
+  color: rgb(245, 248, 248) !important;
+  background-color: rgb(102, 102, 246);
+}
+.login-btn:hover {
+  border: none;
+  box-shadow: 0.4em 0.4em 0.8em 5px rgba(122, 122, 122, 0.5);
+  color: rgb(245, 248, 248) !important;
+  background-color: rgb(55, 55, 199);
+  transition: all 500ms ease;
+  cursor: pointer;
+}
+.login-btn:active {
+  background-color: rgb(120, 120, 200);
+  transition-delay: 0ms;
+}
