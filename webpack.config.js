@@ -1,19 +1,44 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractLoader = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: './src/App.jsx',
+  entry: path.resolve(__dirname, 'homework3', 'index.jsx'),
   output: {
-    filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.[chunkhash].js',
   },
-  mode: 'development',
+  resolve: {
+    extensions: ['.js', '.jsx'],
+    alias: {
+      src: path.resolve(__dirname, 'homework3', 'src'),
+    },
+  },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', MiniCssExtractLoader.loader, 'css-loader'],
       },
     ],
   },
+  devServer: {
+    historyApiFallback: true,
+  },
+  plugins: [
+    new MiniCssExtractLoader({
+      filename: 'style.[contenthash].css',
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'homework3', 'index.html'),
+      filename: 'index.html',
+    }),
+  ],
 };
