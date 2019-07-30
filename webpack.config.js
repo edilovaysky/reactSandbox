@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractLoader = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: path.resolve(__dirname, 'homework3', 'index.jsx'),
+  entry: path.resolve(__dirname, 'src', 'index.jsx'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.[chunkhash].js',
@@ -11,7 +11,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-      src: path.resolve(__dirname, 'homework3', 'src'),
+      src: path.resolve(__dirname, 'src'),
     },
   },
   module: {
@@ -37,7 +37,7 @@ module.exports = {
       filename: 'style.[contenthash].css',
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'homework3', 'index.html'),
+      template: path.resolve(__dirname, 'src', 'index.html'),
       filename: 'index.html',
     }),
   ],
