@@ -7,7 +7,6 @@ export default class UsersList extends Component {
     super(props);
     this.state = {
       users: [],
-      posts: [],
     };
   }
 
@@ -20,10 +19,6 @@ export default class UsersList extends Component {
       return <User key={user.id} {...user} />;
     });
 
-    /* const posts = this.state.posts.map(post => {
-      return <Post key={post.id} {...post} />;
-    }); */
-
     return (
       <div>
         <h1>Пользователи</h1>
@@ -35,9 +30,6 @@ export default class UsersList extends Component {
   componentDidMount() {
     axios.get('http://jsonplaceholder.typicode.com/users/').then(response => {
       this.setState({ users: response.data });
-    });
-    axios.get('http://jsonplaceholder.typicode.com/posts').then(response => {
-      this.setState({ posts: response.data });
     });
   }
 }
