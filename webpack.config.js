@@ -1,44 +1,35 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractLoader = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src', 'index.jsx'),
+  entry: './src/app.jsx',
   output: {
+    filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.[chunkhash].js',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-      src: path.resolve(__dirname, 'src'),
+      layouts: path.resolve(__dirname, 'src', 'app', 'layouts'),
+      components: path.resolve(__dirname, 'src', 'app', 'components'),
+      pages: path.resolve(__dirname, 'src', 'app', 'pages'),
     },
   },
+  mode: 'development',
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
+        use: 'babel-loader',
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', MiniCssExtractLoader.loader, 'css-loader'],
+        test: /\.css/,
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
   devServer: {
     historyApiFallback: true,
+    contentBase: path.resolve(__dirname, 'dist'),
   },
-  plugins: [
-    new MiniCssExtractLoader({
-      filename: 'style.[contenthash].css',
-    }),
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src', 'index.html'),
-      filename: 'index.html',
-    }),
-  ],
 };
