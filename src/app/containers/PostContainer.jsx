@@ -11,11 +11,11 @@ export default class PostContainer extends Component {
   }
 
   componentDidMount() {
-    axios
+    /*   axios
       .get(`http://jsonplaceholder.typicode.com/posts/${this.props.params.id}`)
       .then(response => {
         this.setState({ post: response.data });
-      });
+      }); */
   }
 
   render() {
