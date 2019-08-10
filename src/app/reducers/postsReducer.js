@@ -1,21 +1,21 @@
 const initialState = {
-  users: [],
-  user: {},
+  posts: [],
+  post: {},
   loading: false,
   error: null,
 };
 
-export const usersReducer = (state = initialState, action) => {
+export const postsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'FETCH_USERS_PENDING':
+    case 'FETCH_POSTS_PENDING':
       return { ...state, loading: true };
-    case 'FETCH_USERS_FULFILLED':
+    case 'FETCH_POSTS_FULFILLED':
       return {
         ...state,
-        users: action.payload,
+        posts: action.payload,
         loading: false,
       };
-    case 'FETCH_USERS_REJECTED':
+    case 'FETCH_POSTS_REJECTED':
       return {
         ...state,
         loading: false,
@@ -25,17 +25,17 @@ export const usersReducer = (state = initialState, action) => {
   return state;
 };
 
-export const userReducer = (state = initialState, action) => {
+export const postReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'FETCH_USER_PENDING':
+    case 'FETCH_POST_PENDING':
       return { ...state, loading: true };
-    case 'FETCH_USER_FULFILLED':
+    case 'FETCH_POST_FULFILLED':
       return {
         ...state,
-        user: action.payload,
+        post: action.payload,
         loading: false,
       };
-    case 'FETCH_USER_REJECTED':
+    case 'FETCH_POST_REJECTED':
       return {
         ...state,
         loading: false,

@@ -5,20 +5,23 @@ import { fetchUserAction } from '../actions/fetchUsersAction';
 
 class UserById extends Component {
   render() {
-    console.log(store.getState());
+    console.log(this.props.user);
     return (
       <>
-        <User {...this.props} />
+        <User {...this.props.user} />
       </>
     );
   }
-  /*   componentDidMount() {
-    this.props.dispatch(fetchUserAction(this.props.id));
-  } */
+  componentDidMount() {
+    const userId = this.props.match.url;
+
+    this.props.dispatch(fetchUserAction(userId));
+  }
 }
+
 const mapStateToProps = state => {
   return {
-    users: state.users.users,
+    user: state.user.user,
   };
 };
 

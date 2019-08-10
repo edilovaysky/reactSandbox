@@ -11,9 +11,12 @@ export const fetchUsersAction = () => {
   };
 };
 
-export const fetchUserAction = user => {
+export const fetchUserAction = userId => {
   return {
     type: 'FETCH_USER',
-    payload: store.getState(),
+    payload: axios
+      .get(`http://jsonplaceholder.typicode.com${userId}`)
+      .then(response => response.data)
+      .catch(err => console.log('error', err)),
   };
 };

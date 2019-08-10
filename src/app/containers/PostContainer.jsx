@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Post from '../components/Post';
+import { Post } from '../components/Post';
 
-export default class PostContainer extends Component {
+export class PostContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {

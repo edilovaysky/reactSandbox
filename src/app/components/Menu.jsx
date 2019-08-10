@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
-export default class Menu extends Component {
+export class Menu extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -11,12 +11,10 @@ export default class Menu extends Component {
           </Link>
 
           <div className="collapse navbar-collapse">
-            <ul className="navbar-nav">
-              {this.props.children}
-            </ul>
+            <ul className="navbar-nav">{this.props.children}</ul>
           </div>
         </div>
       </nav>
-    )
+    );
   }
 }

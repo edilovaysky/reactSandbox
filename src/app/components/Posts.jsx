@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
-import Posts from '../containers/PostsContainer';
+import { Post } from '../components/Post';
 
-export default class PostsContainer extends Component {
+export class Posts extends Component {
   render() {
-    return <div>{!this.props.children ? <Posts /> : this.props.children}</div>;
+    const post = this.props;
+    return (
+      <>
+        <Post {...post} />
+      </>
+    );
   }
 }
