@@ -9,13 +9,3 @@ export const fetchPostsAction = () => {
       .catch(err => console.log('error', err)),
   };
 };
-
-export const fetchPostAction = postId => {
-  return {
-    type: 'FETCH_POST',
-    payload: axios
-      .get(`http://jsonplaceholder.typicode.com${postId}`)
-      .then(response => response.data)
-      .catch(err => console.log('error', err)),
-  };
-};

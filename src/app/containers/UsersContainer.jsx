@@ -18,7 +18,9 @@ class UsersList extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchUsersAction());
+    if (!this.props.users.length) {
+      this.props.dispatch(fetchUsersAction());
+    }
   }
 }
 

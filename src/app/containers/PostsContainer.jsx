@@ -6,7 +6,6 @@ import { Posts } from '../components/Posts';
 
 class PostsList extends Component {
   render() {
-    console.log(this.props);
     const posts = this.props.posts.map(post => {
       return <Posts key={post.id} {...post} />;
     });
@@ -19,7 +18,9 @@ class PostsList extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchPostsAction());
+    if (!this.props.posts.length) {
+      this.props.dispatch(fetchPostsAction());
+    }
   }
 }
 
